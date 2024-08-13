@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  ShoppingMall
+
+  Created by Diana Brik on 13.08.2024.
+  
+*/
+
+"Onboarding.FirstSlide" = "Shopping and recreation";
+"Onboarding.SecondSlide" = "Special privileges";
+"Onboarding.ThirdSlide.Title" = "Be the first to know";
+"Onboarding.ThirdSlide.Subtitle" = "Enable notifications to learn about accrued bonuses and special offers";
+"Onboarding.ThirdSlide.TextFirstButton" = "Allow";
+"Onboarding.ThirdSlide.TextSecondButton" = "Later";
+"Onboarding.FourthSlide.Title" = "Registration";
+"Onboarding.FourthSlide.Subtitle" = "Become a part of Shoppingmall community and earn points";
+"Onboarding.FourthSlide.TextFirstButton" = "Sign up";
+"Onboarding.FourthSlide.TextSecondButton" = "I already have an account";
+"Onboarding.Button" = "Skip";

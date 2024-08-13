@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  ShoppingMall
+
+  Created by Diana Brik on 13.08.2024.
+  
+*/
+
+"Onboarding.FirstSlide" = "Шоппинг и отдых";
+"Onboarding.SecondSlide" = "Особые привилегии";
+"Onboarding.ThirdSlide.Title" = "Узнавайте первыми";
+"Onboarding.ThirdSlide.Subtitle" = "Разрешите уведомления, чтобы узнавать о начисленных бонусах и специальных предложениях";
+"Onboarding.ThirdSlide.TextFirstButton" = "Разрешить";
+"Onboarding.ThirdSlide.TextSecondButton" = "Позже";
+"Onboarding.FourthSlide.Title" = "Регистрация";
+"Onboarding.FourthSlide.Subtitle" = "Станьте частью сообщества Shoppingmall и получайте баллы";
+"Onboarding.FourthSlide.TextFirstButton" = "Зарегистрироваться";
+"Onboarding.FourthSlide.TextSecondButton" = "У меня уже есть аккаунт";
+"Onboarding.Button" = "Пропустить";
