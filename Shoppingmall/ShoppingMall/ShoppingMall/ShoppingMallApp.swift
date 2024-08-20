@@ -12,6 +12,9 @@ struct ShoppingMallApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    DeviceManager.shared.registerDeviceIfNeeded()
+                }
         }
     }
 }

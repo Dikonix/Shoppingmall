@@ -10,6 +10,7 @@ import SwiftUI
 struct OnboardingView: View {
     @EnvironmentObject var router: Router
     @Binding var shouldShowOnboarding: Bool
+    @State private var currentPage = 0
     
     var body: some View {
         ScrollView {
@@ -20,16 +21,16 @@ struct OnboardingView: View {
                     .frame(width: 312, height: 18.24)
                     .padding()
                 
-                TabView {
+                TabView(selection: $currentPage) {
                     PageView(title: Constants.Text.onboardingFirstSlide,
                              image: UIImage.firstPicture,
-                             backgroundColor: Constants.Colors.purple ?? UIColor.blue,
+                             backgroundColor: Constants.Colors.purple ?? UIColor.purple,
                              pictureSize: 339,
                              shouldShowOnboarding: $shouldShowOnboarding)
                     .tag(0)
                     PageView(title: Constants.Text.onboardingSecondSlide,
                              image: UIImage.secondPicture,
-                             backgroundColor: Constants.Colors.coral ?? UIColor.purple,
+                             backgroundColor: Constants.Colors.coral ?? UIColor.orange,
                              pictureSize: 350,
                              shouldShowOnboarding: $shouldShowOnboarding)
                     .tag(1)
@@ -40,7 +41,12 @@ struct OnboardingView: View {
                                         textSecondButton: Constants.Text.onboardingThirdSlideTextSecondButton,
                                         backgroundColor: Constants.Colors.purple ?? UIColor.blue,
                                         pictureSize: 284,
-                                        shouldShowOnboarding: $shouldShowOnboarding)
+                                        shouldShowOnboarding: $shouldShowOnboarding,
+                                        onFirstButtonTap: {},
+                                        onSecondButtonTap: { if currentPage < 3 {
+                                            currentPage += 1
+                                        }}
+                    )
                     .tag(2)
                     PageViewWithButtons(title: Constants.Text.onboardingFourthSlideTitle,
                                         subtitle: Constants.Text.onboardingFourthSlideSubtitle,
@@ -49,7 +55,10 @@ struct OnboardingView: View {
                                         textSecondButton: Constants.Text.onboardingFourthSlideTextSecondButton,
                                         backgroundColor: Constants.Colors.black ?? UIColor.black,
                                         pictureSize: 304,
-                                        shouldShowOnboarding: $shouldShowOnboarding)
+                                        shouldShowOnboarding: $shouldShowOnboarding,
+                                        onFirstButtonTap: {},
+                                        onSecondButtonTap: {}
+                    )
                     .tag(3)
                 }
                 .tabViewStyle(PageTabViewStyle())
@@ -105,6 +114,8 @@ struct PageViewWithButtons: View {
     let backgroundColor: UIColor
     let pictureSize: CGFloat
     @Binding var shouldShowOnboarding: Bool
+    let onFirstButtonTap: () -> Void
+    let onSecondButtonTap: () -> Void
     
     var body: some View {
         VStack {
@@ -130,21 +141,20 @@ struct PageViewWithButtons: View {
                 .padding(3)
             Spacer()
             Button(action: {
-                
+                onFirstButtonTap()
             }, label: {
                 Text(textFirstButton)
             })
             .frame(width: 264, height: 34)
             .background(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding(.bottom, 10)
             Button(action: {
-                
+                onSecondButtonTap()
             }, label: {
                 Text(textSecondButton)
                     .foregroundStyle(.white)
             })
-            .padding(.bottom, 40)
+            .padding(.bottom, 50)
         }
         .frame(width: 312, height: 594)
         .background(Color(uiColor: backgroundColor))

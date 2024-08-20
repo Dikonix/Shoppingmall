@@ -48,5 +48,17 @@ enum Constants {
         static let onboardingButton = Bundle.main.localizedString(forKey: "Onboarding.Button",
                                                                       value: "",
                                                                       table: "Localizable")
+        static let home = Bundle.main.localizedString(forKey: "Home",
+                                                      value: "",
+                                                      table: "Localizable")
+        static let catalog = Bundle.main.localizedString(forKey: "Catalog",
+                                                      value: "",
+                                                      table: "Localizable")
+        static let bonus = Bundle.main.localizedString(forKey: "Bonus",
+                                                      value: "",
+                                                      table: "Localizable")
+        static let menu = Bundle.main.localizedString(forKey: "Menu",
+                                                      value: "",
+                                                      table: "Localizable")
     }
 }

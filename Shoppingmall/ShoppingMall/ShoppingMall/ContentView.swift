@@ -11,9 +11,7 @@ struct ContentView: View {
     @AppStorage("_shouldShowOnOnboarding") var shouldShowOnboarding: Bool = true
     
     var body: some View {
-        RouterView(shouldShowOnboarding: $shouldShowOnboarding) {
-            
-        }
+        TabBarRouter(shouldShowOnboarding: $shouldShowOnboarding)
         .fullScreenCover(isPresented: $shouldShowOnboarding, content: {
             OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
         })

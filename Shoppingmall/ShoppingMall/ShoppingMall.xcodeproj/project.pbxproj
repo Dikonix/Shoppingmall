@@ -15,6 +15,12 @@
 		88B859A52C5B567A0054B031 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B859A42C5B567A0054B031 /* OnboardingView.swift */; };
 		88B859A72C5BA7FD0054B031 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B859A62C5BA7FD0054B031 /* Constants.swift */; };
 		88B859AD2C6B6E730054B031 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88B859AB2C6B6E730054B031 /* Localizable.strings */; };
+		88B859B02C6B779D0054B031 /* TabBarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B859AF2C6B779D0054B031 /* TabBarRouter.swift */; };
+		88B859B22C6B7A9F0054B031 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B859B12C6B7A9F0054B031 /* HomeView.swift */; };
+		88B859B42C6B81490054B031 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B859B32C6B81490054B031 /* CatalogView.swift */; };
+		88B859B62C6B82D00054B031 /* BonusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B859B52C6B82D00054B031 /* BonusView.swift */; };
+		88B859B82C6B835B0054B031 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B859B72C6B835B0054B031 /* MenuView.swift */; };
+		88B859BA2C6E16560054B031 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B859B92C6E16560054B031 /* DeviceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +34,12 @@
 		88B859A62C5BA7FD0054B031 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		88B859AC2C6B6E730054B031 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		88B859AE2C6B6E790054B031 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		88B859AF2C6B779D0054B031 /* TabBarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRouter.swift; sourceTree = "<group>"; };
+		88B859B12C6B7A9F0054B031 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		88B859B32C6B81490054B031 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
+		88B859B52C6B82D00054B031 /* BonusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusView.swift; sourceTree = "<group>"; };
+		88B859B72C6B835B0054B031 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		88B859B92C6E16560054B031 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +80,12 @@
 				88B859A42C5B567A0054B031 /* OnboardingView.swift */,
 				88B859A62C5BA7FD0054B031 /* Constants.swift */,
 				88B859AB2C6B6E730054B031 /* Localizable.strings */,
+				88B859AF2C6B779D0054B031 /* TabBarRouter.swift */,
+				88B859B12C6B7A9F0054B031 /* HomeView.swift */,
+				88B859B32C6B81490054B031 /* CatalogView.swift */,
+				88B859B52C6B82D00054B031 /* BonusView.swift */,
+				88B859B72C6B835B0054B031 /* MenuView.swift */,
+				88B859B92C6E16560054B031 /* DeviceManager.swift */,
 			);
 			path = ShoppingMall;
 			sourceTree = "<group>";
@@ -152,7 +170,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88B859B62C6B82D00054B031 /* BonusView.swift in Sources */,
+				88B859B02C6B779D0054B031 /* TabBarRouter.swift in Sources */,
+				88B859B22C6B7A9F0054B031 /* HomeView.swift in Sources */,
+				88B859BA2C6E16560054B031 /* DeviceManager.swift in Sources */,
+				88B859B42C6B81490054B031 /* CatalogView.swift in Sources */,
 				88B859A72C5BA7FD0054B031 /* Constants.swift in Sources */,
+				88B859B82C6B835B0054B031 /* MenuView.swift in Sources */,
 				88B859972C5A1E680054B031 /* ContentView.swift in Sources */,
 				88B859A52C5B567A0054B031 /* OnboardingView.swift in Sources */,
 				88B859A32C5A21A60054B031 /* Router.swift in Sources */,
@@ -307,8 +331,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -316,9 +340,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dianaBrik.ShoppingMall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -335,8 +363,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,9 +372,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dianaBrik.ShoppingMall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
