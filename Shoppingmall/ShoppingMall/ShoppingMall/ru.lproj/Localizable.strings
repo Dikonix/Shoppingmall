@@ -21,3 +21,9 @@
 "Catalog" = "Каталог";
 "Bonus" = "Бонус";
 "Menu" = "Меню";
+"HomeView.GoodAfternoon" = "Добрый день";
+"HomeView.News" = "Новости";
+"HomeView.NewOffers" = "Новые предложения";
+"HomeView.UsefulInformation" = "Полезная информация";
+"HomeView.Events" = "Мероприятия";
+"HomeView.TextAllButton" = "Все";

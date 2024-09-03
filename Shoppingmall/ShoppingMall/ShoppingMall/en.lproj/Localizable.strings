@@ -21,3 +21,9 @@
 "Catalog" = "Catalog";
 "Bonus" = "Bonus";
 "Menu" = "Menu";
+"HomeView.GoodAfternoon" = "Good afternoon";
+"HomeView.News" = "News";
+"HomeView.NewOffers" = "New offers";
+"HomeView.UsefulInformation" = "Useful information";
+"HomeView.Events" = "Events";
+"HomeView.TextAllButton" = "All";

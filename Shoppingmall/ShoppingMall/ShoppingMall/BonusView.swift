@@ -9,7 +9,15 @@ import SwiftUI
 
 struct BonusView: View {
     var body: some View {
-        Text("Bonus")
+        ScrollView {
+            VStack {
+                Image(uiImage: UIImage.shoppingmall)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 312, height: 18.24)
+                    .padding()
+            }
+        }
     }
 }
 

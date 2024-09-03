@@ -60,5 +60,24 @@ enum Constants {
         static let menu = Bundle.main.localizedString(forKey: "Menu",
                                                       value: "",
                                                       table: "Localizable")
+        static let homeViewGoodAfternoon = Bundle.main.localizedString(forKey: "HomeView.GoodAfternoon",
+                                                      value: "",
+                                                      table: "Localizable")
+        
+        static let homeViewNews = Bundle.main.localizedString(forKey: "HomeView.News",
+                                                      value: "",
+                                                      table: "Localizable")
+        static let homeViewNewOffers = Bundle.main.localizedString(forKey: "HomeView.NewOffers",
+                                                      value: "",
+                                                      table: "Localizable")
+        static let homeViewUsefulInformation = Bundle.main.localizedString(forKey: "HomeView.UsefulInformation",
+                                                      value: "",
+                                                      table: "Localizable")
+        static let homeViewEvents = Bundle.main.localizedString(forKey: "HomeView.Events",
+                                                      value: "",
+                                                      table: "Localizable")
+        static let homeViewTextAllButton = Bundle.main.localizedString(forKey: "HomeView.TextAllButton",
+                                                      value: "",
+                                                      table: "Localizable")
     }
 }
