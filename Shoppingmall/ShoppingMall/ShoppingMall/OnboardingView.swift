@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @EnvironmentObject var router: Router
     @Binding var shouldShowOnboarding: Bool
     @State private var currentPage = 0
+    @State private var showAuthorization = false
+    @State private var showLogin = false
     
     var body: some View {
         ScrollView {
@@ -56,8 +57,12 @@ struct OnboardingView: View {
                                         backgroundColor: Constants.Colors.black ?? UIColor.black,
                                         pictureSize: 304,
                                         shouldShowOnboarding: $shouldShowOnboarding,
-                                        onFirstButtonTap: {},
-                                        onSecondButtonTap: {}
+                                        onFirstButtonTap: {
+                                            showAuthorization = true
+                                        },
+                                        onSecondButtonTap: {
+                                            showLogin = true
+                                        }
                     )
                     .tag(3)
                 }
@@ -73,6 +78,13 @@ struct OnboardingView: View {
                         .foregroundStyle(Color(uiColor: .lightGray))
                 })
                 .frame(width: 312, height: 15, alignment: .trailing)
+                
+                .navigationDestination(isPresented: $showAuthorization) {
+                    AuthorizationView()
+                }
+                .navigationDestination(isPresented: $showLogin) {
+                    LoginView()
+                }
             }
         }
     }

@@ -13,7 +13,9 @@ struct ContentView: View {
     var body: some View {
         TabBarRouter(shouldShowOnboarding: $shouldShowOnboarding)
         .fullScreenCover(isPresented: $shouldShowOnboarding, content: {
-            OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
+            NavigationStack {
+                OnboardingView(shouldShowOnboarding: $shouldShowOnboarding)
+            }
         })
     }
 }

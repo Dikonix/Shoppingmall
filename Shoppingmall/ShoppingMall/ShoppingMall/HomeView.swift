@@ -7,287 +7,286 @@
 
 import SwiftUI
 
-struct HomeView: View {
-    @State private var newsSliderData: [NewsCardData] = []
-    @State private var newOffersData: [OfferCardData] = []
-    @State private var usefulInfoData: [ShopCardData] = []
-    @State private var eventsData: [EventCardData] = []
+struct HomeSectionDTO: Hashable {
+    var title: String
+    var size: SectionSize = .small
+    var items: [HomeItemDTO]
+    var destinationView: DestinationView
     
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                Image(uiImage: UIImage.shoppingmall)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 312, height: 18.24)
-                    .padding(8)
-                Text(Constants.Text.homeViewGoodAfternoon)
-                    .font(.largeTitle)
-                    .multilineTextAlignment(.center)
-                
-                if !newsSliderData.isEmpty {
-                    HomeBlockView(title: Constants.Text.homeViewNews, frameWidth: 308, frameHeight: 167, cards: newsSliderData.map { $0.toCard() }, onSeeAllTap: {
-                        
-                    })
-                }
-                
-                if !newOffersData.isEmpty {
-                    HomeBlockView(title: Constants.Text.homeViewNewOffers, frameWidth: 227, frameHeight: 127, cards: newOffersData.map { $0.toCard() }, onSeeAllTap: {
-                       
-                    })
-                }
-                
-                if !usefulInfoData.isEmpty {
-                    HomeBlockView(title: Constants.Text.homeViewUsefulInformation, frameWidth: 227, frameHeight: 127, cards: usefulInfoData.map { $0.toCard() }, onSeeAllTap: {
-                        
-                    })
-                }
-                
-                if !eventsData.isEmpty {
-                    HomeBlockView(title: Constants.Text.homeViewEvents, frameWidth: 227, frameHeight: 127, cards: eventsData.map { $0.toCard() }, onSeeAllTap: {
-                       
-                    })
-                }
-            }
-            .padding()
-        }
-        .onAppear {
-            fetchData()
-        }
+    enum SectionSize {
+        case small, large
     }
     
-    private func fetchData() {
-        fetchNewsSliderData()
-        fetchNewOffersData()
-        fetchUsefulInfoData()
-        fetchEventsData()
-    }
-    
-    private func fetchNewsSliderData() {
-        let urlString = "https://skillbox.dev.instadev.net/api/v1/news/with/promotions-and-event"
-        let queryItems = [
-            URLQueryItem(name: "on_main", value: "true")
-        ]
-        
-        guard var urlComponents = URLComponents(string: urlString) else { return }
-        urlComponents.queryItems = queryItems
-        
-        guard let url = urlComponents.url else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else { return }
-            
-            if let jsonString = String(data: data, encoding: .utf8) {
-                print("News JSON: \(jsonString)")
-            }
-            
-            if let decodedResponse = try? JSONDecoder().decode([NewsCardData].self, from: data) {
-                DispatchQueue.main.async {
-                    self.newsSliderData = decodedResponse
-                }
-            }
-        }.resume()
-    }
-    
-    private func fetchNewOffersData() {
-        let urlString = "https://skillbox.dev.instadev.net/api/v1/offers"
-        let queryItems = [
-            URLQueryItem(name: "on_home", value: "true")
-        ]
-        
-        guard var urlComponents = URLComponents(string: urlString) else { return }
-        urlComponents.queryItems = queryItems
-        
-        guard let url = urlComponents.url else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else { return }
-            
-            if let jsonString = String(data: data, encoding: .utf8) {
-                print("Offers JSON: \(jsonString)")
-            }
-            
-            if let decodedResponse = try? JSONDecoder().decode([OfferCardData].self, from: data) {
-                DispatchQueue.main.async {
-                    self.newOffersData = decodedResponse
-                }
-            }
-        }.resume()
-    }
-    
-    private func fetchUsefulInfoData() {
-        let urlString = "https://skillbox.dev.instadev.net/api/v1/shops/category/slug/services"
-        let queryItems = [
-            URLQueryItem(name: "on_home", value: "true")
-        ]
-        
-        guard var urlComponents = URLComponents(string: urlString) else { return }
-        urlComponents.queryItems = queryItems
-        
-        guard let url = urlComponents.url else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else { return }
-            
-            if let decodedResponse = try? JSONDecoder().decode([ShopCardData].self, from: data) {
-                DispatchQueue.main.async {
-                    self.usefulInfoData = decodedResponse
-                }
-            }
-        }.resume()
-    }
-    
-    private func fetchEventsData() {
-        let urlString = "https://skillbox.dev.instadev.net/api/v1/events"
-        let queryItems = [
-            URLQueryItem(name: "on_home", value: "true")
-        ]
-        
-        guard var urlComponents = URLComponents(string: urlString) else { return }
-        urlComponents.queryItems = queryItems
-        
-        guard let url = urlComponents.url else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else { return }
-            
-            if let decodedResponse = try? JSONDecoder().decode([EventCardData].self, from: data) {
-                DispatchQueue.main.async {
-                    self.eventsData = decodedResponse
-                }
-            }
-        }.resume()
+    enum DestinationView {
+        case news
+        case offers
+        case services
+        case events
     }
 }
 
-struct HomeBlockView: View {
-    let title: String
-    let frameWidth: CGFloat
-    let frameHeight: CGFloat
-    let cards: [CardData]
-    let onSeeAllTap: () -> Void
+struct HomeItemDTO: Hashable {
+    var title: String
+    var description: String
+    var backgroundColor: Color
+    var coverImageSource: URL?
+    var brightness: Brightness
     
+    enum Brightness {
+        case light, dark
+    }
+}
+protocol HomeViewModel: ObservableObject {
+    var sections: [HomeSectionDTO] { get }
+    func getHomeSection()
+}
+
+struct HomeView<ViewModel: HomeViewModel & ObservableObject>: View {
+    @ObservedObject private var homeViewModel: ViewModel
+    
+    init(homeViewModel: ViewModel) {
+        self.homeViewModel = homeViewModel
+    }
+
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(title)
-                    .font(.title3)
-                Spacer()
-                Button(action: onSeeAllTap) {
-                    Text(Constants.Text.homeViewTextAllButton)
-                        .foregroundColor(.blue)
-                }
-            }
+        ScrollView(showsIndicators: false) {
+            HomeHeader(
+                title: "Shoppingmall",
+                greeting: Constants.Text.homeViewGoodAfternoon
+            )
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 16) {
-                    ForEach(cards) { card in
-                        CardView(card: card, frameWidth: frameWidth, frameHeight: frameHeight)
+            if homeViewModel.sections.allSatisfy({ $0.items.isEmpty }) {
+                NoDataView(text: Constants.Text.homeViewNoData)
+            } else {
+                ForEach(homeViewModel.sections, id: \.self) { section in
+                    if !section.items.isEmpty {
+                        HomeSection(section: section) {
+                            HomeCard(item: $0)
+                                .frame(height: section.itemHeight)
+                        }
+                        if (section != homeViewModel.sections.last) {
+                            Divider()
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 16)
+                        }
                     }
                 }
             }
         }
+        .refreshable {
+            homeViewModel.getHomeSection()
+        }
     }
 }
 
-struct CardView: View {
-    let card: CardData
-    let frameWidth: CGFloat
-    let frameHeight: CGFloat
+extension HomeSectionDTO {
+    var itemHeight: CGFloat {
+        switch size {
+            case .large: 160.0
+            default: 128.0
+        }
+    }
+}
+
+struct HomeHeader: View {
+    let title: String
+    let greeting: String
     
     var body: some View {
-        ZStack {
-            if let url = URL(string: card.imageUrl ?? "") {
-                AsyncImage(url: url) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .clipped()
-                } placeholder: {
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(card.backgroundColor)
-                }
-            }
-            VStack(alignment: .leading) {
-                Spacer()
-                Text(card.title)
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding(.bottom, 15)
-                if let subtitle = card.subtitle {
-                    Text(subtitle)
-                        .font(.subheadline)
-                        .foregroundColor(.white)
-                        .padding(.bottom, 10)
-                }
+        VStack(spacing: 8) {
+            Text(title)
+                .font(.callout)
+            Text(greeting)
+                .font(.title)
+                
+        }
+        .padding(.vertical, 24)
+    }
+}
+
+struct HomeSection<Content: View>: View {
+    let section: HomeSectionDTO
+    let content: (HomeItemDTO) -> Content
+    
+    var body: some View {
+        VStack {
+            SectionHeader(title: section.title, destinationView: section.destinationView)
+            
+            HomeCarousel(items: section.items) { item in
+                content(item)
             }
         }
-        .frame(width: frameWidth, height: frameHeight)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
 
-struct CardData: Identifiable {
-    let id = UUID()
+struct SectionHeader: View {
     let title: String
-    let subtitle: String?
-    let imageUrl: String?
-    let backgroundColor: Color
-}
-
-struct NewsCardData: Identifiable, Decodable {
-    let id: String
-    let title: String
-    let logo_url: String?
+    let destinationView: HomeSectionDTO.DestinationView
     
-    func toCard() -> CardData {
-        return CardData(title: title, subtitle: "", imageUrl: logo_url, backgroundColor: Color(uiColor: Constants.Colors.coral ?? .orange))
+    var body: some View {
+        HStack {
+            Text(title)
+                .font(.title2)
+            Spacer()
+            NavigationLink(destination: {
+                switch destinationView {
+                case .news:
+                    NewsView(viewModel: NewsAllFilesViewModel(), title: title)
+                case .offers:
+                    NewsView(viewModel: OffersAllFilesViewModel(), title: title)
+                case .services:
+                    NewsView(viewModel: ServicesAllFilesViewModel(), title: title)
+                case .events:
+                    NewsView(viewModel: EventsAllFilesViewModel(), title: title)
+                }
+            }) {
+                Text("Все")
+            }
+        }
+        .padding(.horizontal, 16)
     }
 }
 
-struct OfferCardData: Identifiable, Decodable {
-    let id: String
-    let name: String
-    let description: String?
-    let image: String?
+struct HomeCarousel<Content: View>: View {
+    let items: [HomeItemDTO]
+    let content: (HomeItemDTO) -> Content
     
-    func toCard() -> CardData {
-        return CardData(title: name, subtitle: description, imageUrl: image, backgroundColor: Color(uiColor: Constants.Colors.purple ?? .purple))
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(items, id: \.self) { item in
+                    content(item)
+                }
+            }
+            .padding(.horizontal, 16)
+        }
     }
 }
 
-struct ShopCardData: Identifiable, Decodable {
-    let id: String
-    let name: String
-    let logo_url: String?
+struct HomeCard: View {
+    let item: HomeItemDTO
     
-    func toCard() -> CardData {
-        return CardData(title: name, subtitle: "", imageUrl: logo_url, backgroundColor: Color(uiColor: Constants.Colors.coral ?? .orange))
+    var body: some View {
+        ZStack(alignment: .bottomLeading) {
+            AsyncImage(url: item.coverImageSource) { image in
+                image
+                    .resizable(resizingMode: .stretch)
+            } placeholder: {
+                Rectangle()
+                    .fill(item.backgroundColor)
+            }
+            
+            VStack(alignment: .leading) {
+                Text(item.title)
+                    .font(.headline)
+                if !item.description.isEmpty {
+                    Text(item.description)
+                        .font(.subheadline)
+                }
+            }
+            .foregroundStyle(item.contentStyle)
+            .padding()
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .aspectRatio(CGSize(width: 2, height: 1), contentMode: .fill)
     }
 }
 
-struct EventCardData: Identifiable, Decodable {
-    let id: String
-    let title: String
-    let logo_url: String?
-    
-    func toCard() -> CardData {
-        return CardData(title: title, subtitle: "", imageUrl: logo_url, backgroundColor: Color(uiColor: Constants.Colors.purple ?? .purple))
+extension HomeItemDTO {
+    var contentStyle: some ShapeStyle {
+        switch brightness {
+            case .dark: return .white
+            case .light: return .black
+        }
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(homeViewModel: MockHomeViewModel())
+}
+
+class MockHomeViewModel: HomeViewModel {
+    @Published private(set) var sections: [HomeSectionDTO] = []
+    
+    init() {
+        getHomeSection()
+    }
+    
+    func getHomeSection() {
+        self.sections = [
+            HomeSectionDTO(
+                title: "Новости",
+                size: .large,
+                items: [
+                    HomeItemDTO(
+                        title: "Black Friday",
+                        description: "скидки до 70%",
+                        backgroundColor: Color.black,
+                        coverImageSource: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP5Yk-9uapAB-NMnkxTdTcJQZn0S5PfScR5RV33XLXpGtlbQ0bmaxH8Wgw2OYFZel6MtA&usqp=CAU")!,
+                        brightness: .dark
+                    ),
+                    HomeItemDTO(
+                        title: "Зимняя распродажа",
+                        description: "скидки до 25%",
+                        backgroundColor: Color.gray,
+                        coverImageSource: URL(string: "https://avatars.mds.yandex.net/i?id=af2bb360823154405977499f38548b99_sr-12495681-images-thumbs&n=13")!,
+                        brightness: .dark
+                    )
+                ], destinationView: .news
+            ),
+            HomeSectionDTO(
+                title: "Новые предложения",
+                items: [
+                    HomeItemDTO(
+                        title: "Розыгрыш призов",
+                        description: "более 100 призов",
+                        backgroundColor: Color.blue,
+                        brightness: .dark
+                    ),
+                    HomeItemDTO(
+                        title: "Скидка на доставку",
+                        description: "При заказе от 1500",
+                        backgroundColor: Color.gray,
+                        coverImageSource: URL(string: "https://bogatyr.club/uploads/posts/2024-03/thumbs/1710344164_bogatyr-club-ncj2-p-fon-dlya-kursovoi-prezentatsii-2.jpg")!,
+                        brightness: .light
+                    )
+                ], destinationView: .offers
+            ),
+            HomeSectionDTO(
+                title: "Полезная информация",
+                items: [
+                    HomeItemDTO(
+                        title: "Переработка",
+                        description: "разбираем полки",
+                        backgroundColor: Color.white,
+                        brightness: .light
+                    ),
+                    HomeItemDTO(
+                        title: "Ухаживаем за волосами",
+                        description: "с Organic Kitchen",
+                        backgroundColor: Color.orange,
+                        brightness: .dark
+                    )
+                ], destinationView: .services
+            ),
+            HomeSectionDTO(
+                title: "Мероприятия",
+                items: [
+                    HomeItemDTO(
+                        title: "Мастер-классы",
+                        description: "для детей от 6 лет",
+                        backgroundColor: Color.black,
+                        coverImageSource: URL(string: "https://avatars.mds.yandex.net/i?id=f87edad388aee0e0ea215bd7e9ad12d9_sr-8235455-images-thumbs&n=13")!,
+                        brightness: .dark
+                    ),
+                    HomeItemDTO(
+                        title:"Выходные с Shoppingmall",
+                        description: "для всей семьи",
+                        backgroundColor: Color.blue,
+                        brightness: .dark
+                    )
+                ], destinationView: .events
+            ),
+        ]
+    }
 }

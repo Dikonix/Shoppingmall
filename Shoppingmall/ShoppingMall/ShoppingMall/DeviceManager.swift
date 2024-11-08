@@ -5,7 +5,7 @@
 //  Created by Diana Brik on 15.08.2024.
 //
 
-import UIKit
+import SwiftUI
 import Combine
 
 class DeviceManager {
@@ -56,7 +56,7 @@ class DeviceManager {
                     print("Error: \(error.localizedDescription)")
                 }
             }, receiveValue: { response in
-                if let mobileDeviceId = response["mobileDeviceId"] {
+                if let mobileDeviceId = response["id"] {
                     self.userDefaults.set(mobileDeviceId, forKey: self.mobileDeviceIdKey)
                     print("Device registered with mobileDeviceId: \(mobileDeviceId)")
                 }
