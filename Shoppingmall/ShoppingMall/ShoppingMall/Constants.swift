@@ -286,25 +286,25 @@ enum Constants {
         static let menuViewAbout = Bundle.main.localizedString(forKey: "MenuView.About",
                                                                 value: "",
                                                                 table: "Localizable")
-        static let settingsVeiwNotifications = Bundle.main.localizedString(forKey: "SettingsVeiw.Notifications",
+        static let settingsViewNotifications = Bundle.main.localizedString(forKey: "SettingsView.Notifications",
                                                                 value: "",
                                                                 table: "Localizable")
-        static let settingsVeiwPromotionsInStores = Bundle.main.localizedString(forKey: "SettingsVeiw.PromotionsInStores",
+        static let settingsViewPromotionsInStores = Bundle.main.localizedString(forKey: "SettingsView.PromotionsInStores",
                                                                 value: "",
                                                                 table: "Localizable")
-        static let settingsVeiwChildrenEvents = Bundle.main.localizedString(forKey: "SettingsVeiw.ChildrenEvents",
+        static let settingsViewChildrenEvents = Bundle.main.localizedString(forKey: "SettingsView.ChildrenEvents",
                                                                 value: "",
                                                                 table: "Localizable")
-        static let settingsVeiwEventsInTheMall = Bundle.main.localizedString(forKey: "SettingsVeiw.EventsInTheMall",
+        static let settingsViewEventsInTheMall = Bundle.main.localizedString(forKey: "SettingsView.EventsInTheMall",
                                                                 value: "",
                                                                 table: "Localizable")
-        static let settingsVeiwProfileData = Bundle.main.localizedString(forKey: "SettingsVeiw.ProfileData",
+        static let settingsViewProfileData = Bundle.main.localizedString(forKey: "SettingsView.ProfileData",
                                                                 value: "",
                                                                 table: "Localizable")
-        static let settingsVeiwLogoutOfProfile = Bundle.main.localizedString(forKey: "SettingsVeiw.LogoutOfProfile",
+        static let settingsViewLogoutOfProfile = Bundle.main.localizedString(forKey: "SettingsView.LogoutOfProfile",
                                                                 value: "",
                                                                 table: "Localizable")
-        static let settingsVeiwAuthorization = Bundle.main.localizedString(forKey: "SettingsVeiw.Authorization",
+        static let settingsViewAuthorization = Bundle.main.localizedString(forKey: "SettingsView.Authorization",
                                                                 value: "",
                                                                 table: "Localizable")
         static let profileViewModelImplErrorMessage = Bundle.main.localizedString(forKey: "ProfileViewModelImpl.ErrorMessage",

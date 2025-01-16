@@ -27,27 +27,27 @@ struct SettingsView: View {
             
             VStack(alignment: .leading, spacing: 16) {
                 if showNoAuth == false {
-                    Text(Constants.Text.settingsVeiwNotifications)
+                    Text(Constants.Text.settingsViewNotifications)
                         .font(.headline)
                     
-                    Toggle(Constants.Text.settingsVeiwPromotionsInStores, isOn: $promotionsEnabled)
+                    Toggle(Constants.Text.settingsViewPromotionsInStores, isOn: $promotionsEnabled)
                         .toggleStyle(SwitchToggleStyle(tint: purpleColor))
                     
                     Divider()
                     
-                    Toggle(Constants.Text.settingsVeiwChildrenEvents, isOn: $kidsEventsEnabled)
+                    Toggle(Constants.Text.settingsViewChildrenEvents, isOn: $kidsEventsEnabled)
                         .toggleStyle(SwitchToggleStyle(tint: purpleColor))
                     
                     Divider()
                     
-                    Toggle(Constants.Text.settingsVeiwEventsInTheMall, isOn: $mallEventsEnabled)
+                    Toggle(Constants.Text.settingsViewEventsInTheMall, isOn: $mallEventsEnabled)
                         .toggleStyle(SwitchToggleStyle(tint: purpleColor))
                     
                     Divider()
                     
                     if isAuthenticated {
                         NavigationLink(destination: ProfileView(viewModel: ProfileViewModelImpl(mobileDeviceId: mobileDeviceId))) {
-                            Label(Constants.Text.settingsVeiwProfileData, systemImage: "person.circle")
+                            Label(Constants.Text.settingsViewProfileData, systemImage: "person.circle")
                                 .foregroundColor(purpleColor)
                         }
                         
@@ -58,14 +58,14 @@ struct SettingsView: View {
                             AuthManager.logOut()
                             logoutViewModel.logout()
                         }) {
-                            Label(Constants.Text.settingsVeiwLogoutOfProfile, systemImage: "arrowshape.turn.up.left")
+                            Label(Constants.Text.settingsViewLogoutOfProfile, systemImage: "arrowshape.turn.up.left")
                                 .foregroundColor(purpleColor)
                         }
                     } else {
                         Button(action: {
                             showNoAuth = true
                         }) {
-                            Label(Constants.Text.settingsVeiwAuthorization, systemImage: "arrowshape.turn.up.left")
+                            Label(Constants.Text.settingsViewAuthorization, systemImage: "arrowshape.turn.up.left")
                                 .foregroundColor(purpleColor)
                         }
                     }
